@@ -1,38 +1,79 @@
-# -Product-Similarity-Analysis-and-Recommendation-System-Using-Text-Mining-
-Content-based Amazon product recommendation system using TF-IDF and cosine similarity for suggesting similar items based on titles and details.
+# Ürün Benzerlik Analizi ve Tavsiye Sistemi (Text Mining Kullanılarak)
 
-Data Processing
-Combined JSONL files from multiple categories into a single DataFrame.
-Extracted and parsed product details (e.g., brand, material) into structured text.
-Cleaned text by removing punctuation, converting to lowercase, and trimming spaces.
-Feature Engineering
-Applied TF-IDF vectorization with:
-N-grams (unigrams + bigrams)
-Stop-word removal
-Max features = 10,000 to focus on the most relevant terms.
-Similarity Calculation
-Computed cosine similarity between product descriptions.
-Generated a 14,000 x 14,000 similarity matrix for recommendations.
-Recommendation Function
-For a given product, the system retrieves the top-N most similar items based on cosine similarity scores.
-Evaluation & Insights
+Amazon ürünleri için **TF-IDF** ve **kosinüs benzerliği** kullanarak içerik tabanlı bir öneri sistemi. Ürün başlıkları ve açıklamalarına göre benzer ürünleri önerir.
 
-Recommendation Quality:
-Worked well for beauty and personal care products (e.g., reusable makeup pads with similar materials/brands).
-Struggled with Digital_Music due to less distinctive textual features.
-Similarity Distribution:
-Most products had low similarity scores (0.1–0.3), but some pairs scored >0.5, indicating strong matches.
-Visualizations:
-Heatmaps and histograms showed clustering patterns and score distributions.
-Limitations & Improvements
+---
 
-Data Quality: Some categories (e.g., Digital_Music) had sparse or generic descriptions, reducing recommendation accuracy.
-Enhancements:
-Incorporate user behavior data (e.g., ratings, purchases) for hybrid recommendations.
-Use word embeddings (Word2Vec, BERT) for deeper semantic analysis.
-Address cold-start problems with popularity-based fallbacks.
-Technologies Used
+## 📌 Proje Özeti
 
-Python Libraries: Pandas, Scikit-learn (TF-IDF, cosine similarity), Matplotlib/Seaborn.
-Methods: Text preprocessing, TF-IDF, cosine similarity, heatmap visualization.
+Bu proje, Amazon ürünleri için **içerik tabanlı bir öneri sistemi** uygular. Sistem, ürün açıklamaları üzerinden ürün benzerliklerini hesaplar ve her ürün için en benzer N ürünü önerir.
+
+---
+
+## 🛠 Özellikler ve Yöntem
+
+### Veri İşleme
+- Birden fazla kategoriden gelen **JSONL dosyaları** tek bir DataFrame’de birleştirildi.  
+- Ürün detayları (örn. marka, malzeme) yapılandırılmış metin hâline getirildi.  
+- Metin temizlendi: noktalama işaretleri kaldırıldı, küçük harfe çevrildi, boşluklar düzeltildi.
+
+### Özellik Mühendisliği
+- **TF-IDF vektörizasyonu** uygulandı:  
+  - N-gramlar: **tekli ve ikili kelimeler (unigram + bigram)**  
+  - Stop-word (önemsiz kelime) çıkarımı  
+  - Maksimum özellik = **10.000** (en anlamlı terimlere odaklanmak için)
+
+### Benzerlik Hesaplama
+- Ürün açıklamaları arasında **kosinüs benzerliği** hesaplandı.  
+- Öneriler için **14.000 x 14.000 benzerlik matrisi** oluşturuldu.
+
+### Öneri Fonksiyonu
+- Belirli bir ürün için **en benzer N ürünü** kosinüs benzerlik skorlarına göre getirir.
+
+---
+
+## 📊 Değerlendirme ve İçgörüler
+
+- **Öneri Kalitesi**:  
+  - **Kozmetik ve kişisel bakım ürünlerinde** iyi çalışır.  
+  - **Dijital Müzik** kategorisinde metinlerin az ve genel olmasından dolayı zorlanır.  
+
+- **Benzerlik Dağılımı**:  
+  - Çoğu ürün **0.1–0.3** arası skor aldı  
+  - Bazı ürün çiftleri **>0.5**, güçlü eşleşmeler gösteriyor  
+
+- **Görselleştirmeler**:  
+  - Isı haritaları ve histogramlar kümeleşme ve skor dağılımını gösterir  
+
+---
+
+## ⚠ Sınırlamalar ve Geliştirmeler
+
+- Bazı kategorilerde açıklamaların az veya genel olması doğruluk oranını düşürür.  
+- **Geliştirmeler**:  
+  - Kullanıcı davranış verilerini (puanlar, satın almalar) ekleyerek **hibrit öneri sistemi** oluşturmak  
+  - Daha derin semantik analiz için **Word2Vec, BERT gibi kelime gömme yöntemleri** kullanmak  
+  - **Soğuk başlangıç (cold-start) problemlerini** popülerlik tabanlı önerilerle çözmek  
+
+---
+
+## 💻 Kullanılan Teknolojiler
+
+- **Python Kütüphaneleri**: Pandas, Scikit-learn (TF-IDF, kosinüs benzerliği), Matplotlib / Seaborn  
+- **Yöntemler**: Metin ön işleme, TF-IDF, kosinüs benzerliği, ısı haritası görselleştirmesi  
+
+---
+
+## 🔗 Kullanım Örneği
+
+```python
+# Benzerlik matrisini yükleme
+similarity_matrix = load_similarity_matrix('similarity_matrix.npy')
+
+# Belirli bir ürün için en benzer 5 ürünü alma
+recommendations = get_top_n_recommendations(product_id=123, top_n=5)
+print(recommendations)
+
+## 👤 FURKAN DMEİR 
+Geliştiren: **FURKAN DEMİR ** 
 
