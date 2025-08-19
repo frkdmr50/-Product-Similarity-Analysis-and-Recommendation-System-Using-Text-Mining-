@@ -64,15 +64,6 @@ Bu proje, Amazon ürünleri için **içerik tabanlı bir öneri sistemi** uygula
 
 ---
 
-## 🔗 Kullanım Örneği
-
-```python
-# Benzerlik matrisini yükleme
-similarity_matrix = load_similarity_matrix('similarity_matrix.npy')
-
-# Belirli bir ürün için en benzer 5 ürünü alma
-recommendations = get_top_n_recommendations(product_id=123, top_n=5)
-print(recommendations)
 
 ## 👤 FURKAN DMEİR 
 Geliştiren: **FURKAN DEMİR ** 
